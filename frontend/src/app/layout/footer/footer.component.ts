@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CATEGORIES } from '../../features/landing/data/categories';
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   year = new Date().getFullYear();
+  categories = CATEGORIES;
 }

@@ -3,9 +3,11 @@ export interface Category {
   title: string;
   description: string;
   bullets: string[];
+  color: string;
 }
 
 // Die 4 Kategorien fuer die Startseite
+// color = gleicher Hex-Wert wie --accent-* in styles.scss (Three.js kann kein CSS var() lesen)
 export const CATEGORIES: Category[] = [
   {
     id: 'geld',
@@ -13,6 +15,7 @@ export const CATEGORIES: Category[] = [
     description:
       'Rechnungen, Abos und Kündigungsfristen im Blick – bevor sie dich überraschen.',
     bullets: ['Rechnungen & Abos', 'Kündigungsfristen', 'Vertragsunterlagen'],
+    color: '#e2a33d',
   },
   {
     id: 'planung',
@@ -20,6 +23,7 @@ export const CATEGORIES: Category[] = [
     description:
       'Termine, Fristen und wiederkehrende Aufgaben, sauber getaktet statt im Kopf jongliert.',
     bullets: ['Termine & Erinnerungen', 'Fristen im Blick', 'Wiederkehrende Aufgaben'],
+    color: '#3e7cb1',
   },
   {
     id: 'haushalt',
@@ -27,6 +31,7 @@ export const CATEGORIES: Category[] = [
     description:
       'Von der Versicherungspolice bis zur Bedienungsanleitung – wiedergefunden in Sekunden.',
     bullets: ['Wichtige Dokumente', 'Versicherungen', 'Anleitungen & Belege'],
+    color: '#c1613d',
   },
   {
     id: 'info',
@@ -34,5 +39,6 @@ export const CATEGORIES: Category[] = [
     description:
       'Notizen, Links und lose Infos, die sonst nirgends hinpassen, gebündelt an einem Ort.',
     bullets: ['Notizen & Links', 'Ideen & Merkzettel', 'Schnelle Ablage'],
+    color: '#6c5ce0',
   },
 ];

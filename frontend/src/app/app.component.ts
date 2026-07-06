@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -9,4 +9,11 @@ import { FooterComponent } from './layout/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  showBackToTop = false;
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.showBackToTop = window.scrollY > 400;
+  }
+}

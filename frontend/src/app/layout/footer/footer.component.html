@@ -1,26 +1,47 @@
 <footer class="footer">
   <div class="container">
-    <div class="row gy-4 align-items-start">
-      <div class="col-12 col-lg-6">
-        <p class="footer-brand">RichardAI</p>
+    <div class="row gy-4">
+      <div class="col-12 col-lg-5">
+        <a class="footer-brand" href="#top">
+          <svg class="footer-logo" viewBox="0 0 32 32" aria-hidden="true">
+            <line x1="16" y1="16" x2="16" y2="6" class="logo-line" />
+            <line x1="16" y1="16" x2="26" y2="16" class="logo-line" />
+            <line x1="16" y1="16" x2="16" y2="26" class="logo-line" />
+            <line x1="16" y1="16" x2="6" y2="16" class="logo-line" />
+            <circle cx="16" cy="6" r="2.25" class="dot-geld" />
+            <circle cx="26" cy="16" r="2.25" class="dot-planung" />
+            <circle cx="16" cy="26" r="2.25" class="dot-haushalt" />
+            <circle cx="6" cy="16" r="2.25" class="dot-info" />
+            <circle cx="16" cy="16" r="4.5" class="logo-center" />
+          </svg>
+          <span>RichardAI</span>
+        </a>
         <p class="footer-text">
           Ein ruhiger, klar sortierter Ort für Geld & Verträge, Planung & Zeit,
           Haushalt & Dokumente und alles dazwischen.
         </p>
       </div>
 
-      <div class="col-12 col-lg-6">
-        <p class="footer-heading">Über RichardAI</p>
+      <nav class="col-12 col-lg-3" aria-label="Bereiche">
+        <p class="footer-heading">Bereiche</p>
         <ul class="footer-links">
-          <li><a href="#kategorien">Kategorien</a></li>
+          @for (category of categories; track category.id) {
+            <li><a href="#kategorien">{{ category.title }}</a></li>
+          }
+        </ul>
+      </nav>
+
+      <nav class="col-12 col-lg-4" aria-label="RichardAI">
+        <p class="footer-heading">RichardAI</p>
+        <ul class="footer-links">
           <li><a href="#vorteile">Vorteile</a></li>
           <li><a href="#start">Kostenlos starten</a></li>
         </ul>
-      </div>
+      </nav>
     </div>
 
     <div class="footer-bottom">
-      <span>© {{ year }} RichardAI</span>
+      <span class="copyright">© {{ year }} RichardAI</span>
     </div>
   </div>
 </footer>

@@ -1,20 +1,63 @@
 .footer {
   background: var(--ink);
   color: var(--text-on-ink-muted);
-  padding-top: 3.5rem;
+  padding-top: 4rem;
   padding-bottom: 2rem;
+  border-top: 3px solid;
+  border-image: linear-gradient(
+    90deg,
+    var(--accent-geld),
+    var(--accent-planung),
+    var(--accent-haushalt),
+    var(--accent-info)
+  ) 1;
 }
 
 .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.3rem;
   color: var(--text-on-ink);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.footer-logo {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.logo-line {
+  stroke: var(--brand);
+  stroke-width: 1.75;
+  opacity: 0.65;
+}
+
+.dot-geld {
+  fill: var(--accent-geld);
+}
+
+.dot-planung {
+  fill: var(--accent-planung);
+}
+
+.dot-haushalt {
+  fill: var(--accent-haushalt);
+}
+
+.dot-info {
+  fill: var(--accent-info);
+}
+
+.logo-center {
+  fill: var(--text-on-ink);
 }
 
 .footer-text {
-  max-width: 32ch;
+  max-width: 34ch;
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -43,7 +86,8 @@
   transition: color 0.2s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a:focus-visible {
   color: var(--text-on-ink);
 }
 
@@ -53,4 +97,34 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8rem;
   font-family: var(--font-mono);
+  text-align: right;
+}
+
+.copyright {
+  color: var(--text-on-ink-muted);
+}
+
+/* Mobile: gestapelte Spalten und Bottom-Bar zentrieren statt links auszurichten */
+@media (max-width: 991px) {
+  .footer .row > div,
+  .footer .row > nav {
+    text-align: center;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
 }

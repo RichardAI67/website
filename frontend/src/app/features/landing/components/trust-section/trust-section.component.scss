@@ -2,6 +2,47 @@
   background: var(--paper-raised);
 }
 
+.intro {
+  max-width: 42rem;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  color: var(--brand-strong);
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.75rem;
+  }
+}
+
+.grid-wrapper {
+  align-items: stretch;
+}
+
+.point {
+  height: 100%;
+  background: var(--paper);
+  border: 1px solid rgba(28, 36, 48, 0.06);
+  border-radius: var(--radius-card);
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  transition: transform 0.15s ease-out, box-shadow 0.25s ease;
+}
+
+.point:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -18px rgba(16, 24, 40, 0.22);
+}
+
 .point-icon {
   width: 44px;
   height: 44px;

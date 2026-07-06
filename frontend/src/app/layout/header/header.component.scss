@@ -4,7 +4,10 @@
   z-index: 50;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background: rgba(14, 23, 38, 0.72);
+  /* Fast deckend statt halbtransparent: die Hero-3D-Szene dahinter aendert staendig
+     ihre Farbe/Helligkeit, ein zu duennes Glas waere manchmal zu hell fuer genug
+     Text-Kontrast (WCAG AA). */
+  background: rgba(14, 23, 38, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

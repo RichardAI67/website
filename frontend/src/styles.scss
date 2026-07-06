@@ -19,6 +19,7 @@
   /* Brand */
   --brand: #1b8f7a;
   --brand-strong: #146b5b;
+  --brand-darker: #0f5347;
   --brand-soft: rgba(27, 143, 122, 0.12);
 
   /* Category accents (used for wayfinding — one color per category, everywhere) */
@@ -123,12 +124,13 @@ button:focus-visible {
 }
 
 .btn-brand--solid {
-  background: var(--brand);
+  /* brand-strong statt brand: brand allein hat mit weisser Schrift nicht genug Kontrast (WCAG AA) */
+  background: var(--brand-strong);
   color: var(--text-on-ink);
 }
 
 .btn-brand--solid:hover {
-  background: var(--brand-strong);
+  background: var(--brand-darker);
   transform: translateY(-1px);
 }
 
