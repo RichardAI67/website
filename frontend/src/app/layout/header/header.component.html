@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark top-nav">
+  <div class="container">
+    <a class="navbar-brand logo" href="#top">
+      <svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true">
+        <line x1="16" y1="16" x2="16" y2="6" class="logo-line" />
+        <line x1="16" y1="16" x2="26" y2="16" class="logo-line" />
+        <line x1="16" y1="16" x2="16" y2="26" class="logo-line" />
+        <line x1="16" y1="16" x2="6" y2="16" class="logo-line" />
+        <circle cx="16" cy="6" r="2.25" class="dot-geld" />
+        <circle cx="26" cy="16" r="2.25" class="dot-planung" />
+        <circle cx="16" cy="26" r="2.25" class="dot-haushalt" />
+        <circle cx="6" cy="16" r="2.25" class="dot-info" />
+        <circle cx="16" cy="16" r="4.5" class="logo-center" />
+      </svg>
+      <span>RichardAI</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#siteNavCollapse"
+      aria-controls="siteNavCollapse"
+      aria-expanded="false"
+      aria-label="Navigation umschalten"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="siteNavCollapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#kategorien" (click)="closeMenu($event)">Bereiche</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#vorteile" (click)="closeMenu($event)">Vorteile</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn-brand btn-brand--solid nav-cta-button" href="#start" (click)="closeMenu($event)">Kostenlos starten</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

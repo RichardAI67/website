@@ -1,0 +1,99 @@
+<section class="hero" id="top">
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+  </div>
+
+  <div class="container content">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <p class="eyebrow dot-text">
+          <span class="dot"></span>
+          RichardAI
+        </p>
+        <h1 class="headline">
+          Ein Zuhause für alles, was sonst überall verstreut liegt.
+        </h1>
+        <p class="subtext">
+          Verträge, Termine, Rechnungen und Notizen laufen bei RichardAI in einem ruhigen,
+          klar sortierten Ort zusammen – statt in vier verschiedenen Apps, Ordnern und Schubladen.
+        </p>
+        <div class="buttons">
+          <a class="btn-brand btn-brand--solid" href="#start">Jetzt kostenlos starten</a>
+          <a class="btn-brand btn-brand--ghost" href="#kategorien">So funktioniert's</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <svg class="diagram" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Vier Lebensbereiche laufen animiert in einem zentralen Punkt zusammen">
+          <g class="lines">
+            @for (cat of categories; track cat.id; let i = $index) {
+              <line
+                [attr.x1]="hubX"
+                [attr.y1]="hubY"
+                [attr.x2]="positions[i].x"
+                [attr.y2]="positions[i].y"
+                class="connector connector-{{ cat.id }}"
+                [style.animation-delay.ms]="i * 260"
+              />
+            }
+          </g>
+
+          <circle [attr.cx]="hubX" [attr.cy]="hubY" r="46" class="hub-ring" />
+          <circle [attr.cx]="hubX" [attr.cy]="hubY" r="30" class="hub" />
+
+          @for (cat of categories; track cat.id; let i = $index) {
+            <g
+              class="node node-{{ cat.id }}"
+              [attr.transform]="'translate(' + positions[i].x + ',' + positions[i].y + ')'"
+              [style.animation-delay.ms]="i * 260"
+            >
+              <g class="node-inner">
+              <circle r="21" class="node-circle" />
+              @switch (cat.id) {
+                @case ('geld') {
+                  <g class="node-icon">
+                    <rect x="-8" y="-9" width="10" height="13" rx="1.5" />
+                    <line x1="-6" y1="-5.5" x2="0" y2="-5.5" />
+                    <line x1="-6" y1="-2" x2="0" y2="-2" />
+                    <circle cx="6" cy="6" r="5.5" />
+                    <line x1="6" y1="3.2" x2="6" y2="8.8" />
+                    <line x1="3.4" y1="6" x2="8.6" y2="6" />
+                  </g>
+                }
+                @case ('planung') {
+                  <g class="node-icon">
+                    <rect x="-9" y="-6" width="18" height="15" rx="2" />
+                    <line x1="-9" y1="-1.5" x2="9" y2="-1.5" />
+                    <line x1="-4.5" y1="-9" x2="-4.5" y2="-6" />
+                    <line x1="4.5" y1="-9" x2="4.5" y2="-6" />
+                    <circle cx="3.2" cy="4.5" r="1.6" class="icon-dot" />
+                  </g>
+                }
+                @case ('haushalt') {
+                  <g class="node-icon">
+                    <polyline points="-9,-1 0,-10 9,-1" />
+                    <rect x="-6.5" y="-1" width="13" height="10" rx="0.5" />
+                    <rect x="-1.6" y="3" width="3.2" height="6" />
+                  </g>
+                }
+                @case ('info') {
+                  <g class="node-icon">
+                    <circle cx="0" cy="0" r="2.6" class="icon-dot" />
+                    <circle cx="0" cy="-8.5" r="1.9" class="icon-dot" />
+                    <circle cx="7.4" cy="4.3" r="1.9" class="icon-dot" />
+                    <circle cx="-7.4" cy="4.3" r="1.9" class="icon-dot" />
+                    <line x1="0" y1="0" x2="0" y2="-8.5" />
+                    <line x1="0" y1="0" x2="7.4" y2="4.3" />
+                    <line x1="0" y1="0" x2="-7.4" y2="4.3" />
+                  </g>
+                }
+              }
+              </g>
+            </g>
+          }
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

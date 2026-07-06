@@ -1,0 +1,169 @@
+/* ---------------------------------------------------------------------- */
+/* RichardAI — design tokens                                              */
+/* ---------------------------------------------------------------------- */
+
+:root {
+  /* Surfaces */
+  --ink: #0e1726;
+  --ink-800: #16233a;
+  --ink-700: #1f3050;
+  --paper: #f6f2ea;
+  --paper-raised: #ffffff;
+
+  /* Text */
+  --text-body: #1c2430;
+  --text-muted: #5b6472;
+  --text-on-ink: #eef1f6;
+  --text-on-ink-muted: #97a3ba;
+
+  /* Brand */
+  --brand: #1b8f7a;
+  --brand-strong: #146b5b;
+  --brand-soft: rgba(27, 143, 122, 0.12);
+
+  /* Category accents (used for wayfinding — one color per category, everywhere) */
+  --accent-geld: #e2a33d;
+  --accent-planung: #3e7cb1;
+  --accent-haushalt: #c1613d;
+  --accent-info: #6c5ce0;
+
+  /* Type */
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Rhythm */
+  --radius-card: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Damit die Ueberschriften nicht hinter dem sticky Header verschwinden, wenn man zu einem Anker springt */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: inherit;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Shared section utilities -------------------------------------------- */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-brand:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+.btn-brand--solid {
+  background: var(--brand);
+  color: var(--text-on-ink);
+}
+
+.btn-brand--solid:hover {
+  background: var(--brand-strong);
+  transform: translateY(-1px);
+}
+
+.btn-brand--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--text-on-ink);
+}
+
+.btn-brand--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.btn-brand--inverse {
+  background: var(--paper-raised);
+  color: var(--brand-strong);
+}
+
+.btn-brand--inverse:hover {
+  background: var(--paper);
+  transform: translateY(-1px);
+}
+
+/* Respect reduced motion everywhere ------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

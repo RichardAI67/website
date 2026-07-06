@@ -1,0 +1,189 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, var(--ink-700) 0%, var(--ink) 55%, #090f1a 100%);
+  color: var(--text-on-ink);
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Bunte Kreise im Hintergrund, die sich langsam bewegen */
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+}
+
+.blob-a {
+  width: 32rem;
+  height: 32rem;
+  top: -10rem;
+  left: -8rem;
+  background: var(--brand);
+  animation: drift-a 24s ease-in-out infinite alternate;
+}
+
+.blob-b {
+  width: 26rem;
+  height: 26rem;
+  bottom: -12rem;
+  right: -6rem;
+  background: var(--accent-info);
+  animation: drift-b 30s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(4rem, 3rem) scale(1.12); }
+}
+
+@keyframes drift-b {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-3rem, -2rem) scale(1.08); }
+}
+
+/* Text */
+
+.dot-text {
+  color: var(--text-on-ink-muted);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 4px var(--brand-soft);
+}
+
+.headline {
+  font-size: 3.6rem;
+  font-weight: 600;
+  line-height: 1.08;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  max-width: 16ch;
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2.4rem;
+  }
+}
+
+.subtext {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--text-on-ink-muted);
+  max-width: 46ch;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2.25rem;
+}
+
+/* Das animierte Diagramm mit den 4 Punkten */
+
+.diagram {
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  overflow: visible;
+}
+
+.connector {
+  stroke-width: 1.5;
+  stroke-dasharray: 5 12;
+  opacity: 0.55;
+  animation: flow 3.2s linear infinite;
+}
+
+.connector-geld { stroke: var(--accent-geld); }
+.connector-planung { stroke: var(--accent-planung); }
+.connector-haushalt { stroke: var(--accent-haushalt); }
+.connector-info { stroke: var(--accent-info); }
+
+@keyframes flow {
+  to { stroke-dashoffset: -170; }
+}
+
+.hub-ring {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 1;
+  opacity: 0.35;
+  animation: pulse 3.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(1.12); opacity: 0.1; }
+}
+
+.hub {
+  fill: var(--brand);
+}
+
+.node-inner {
+  animation: bob 5s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.node-circle {
+  fill: var(--ink-800);
+  stroke-width: 1.5;
+}
+
+.node-geld .node-circle { stroke: var(--accent-geld); }
+.node-planung .node-circle { stroke: var(--accent-planung); }
+.node-haushalt .node-circle { stroke: var(--accent-haushalt); }
+.node-info .node-circle { stroke: var(--accent-info); }
+
+.node-geld .node-icon { color: var(--accent-geld); }
+.node-planung .node-icon { color: var(--accent-planung); }
+.node-haushalt .node-icon { color: var(--accent-haushalt); }
+.node-info .node-icon { color: var(--accent-info); }
+
+.node-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-dot {
+  fill: currentColor;
+  stroke: none;
+}

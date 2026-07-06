@@ -1,0 +1,44 @@
+.trust-section {
+  background: var(--paper-raised);
+}
+
+.point-icon {
+  width: 44px;
+  height: 44px;
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.shape {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dot {
+  fill: var(--brand);
+  stroke: none;
+}
+
+.ring {
+  opacity: 0.45;
+}
+
+.ring-outer {
+  opacity: 0.22;
+}
+
+.point-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.point-description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 32ch;
+}
