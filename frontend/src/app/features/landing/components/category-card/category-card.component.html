@@ -1,4 +1,8 @@
-<article class="card card-{{ category.id }}" [style.transform]="cardTransform()">
+<article class="card card-{{ category.id }}" [class.featured]="!!category.route" [style.transform]="cardTransform()">
+  @if (category.route) {
+    <span class="badge">Verfügbar</span>
+  }
+
   <svg class="icon" viewBox="0 0 40 40" aria-hidden="true">
     <circle cx="20" cy="20" r="19" class="icon-bg" />
     <g transform="translate(20,20) scale(1.85)">
@@ -52,4 +56,14 @@
       <li>{{ bullet }}</li>
     }
   </ul>
+
+  @if (category.route) {
+    <a class="open-link" [routerLink]="category.route">
+      Öffnen
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12,5 19,12 12,19" />
+      </svg>
+    </a>
+  }
 </article>

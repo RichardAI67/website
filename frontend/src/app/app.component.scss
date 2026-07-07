@@ -34,6 +34,7 @@ main:focus {
   justify-content: center;
   width: 46px;
   height: 46px;
+  border: none;
   border-radius: 50%;
   background: var(--brand-strong);
   color: var(--text-on-ink);
@@ -41,6 +42,7 @@ main:focus {
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
+  cursor: pointer;
   transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
 }
 

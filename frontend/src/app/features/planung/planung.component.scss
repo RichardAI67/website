@@ -1,0 +1,225 @@
+.planung-page {
+  background: var(--paper);
+  min-height: 100%;
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+
+.back-link {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  color: var(--text-body);
+}
+
+.back-link svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-planung-strong);
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 22ch;
+  margin-bottom: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.85rem;
+  }
+}
+
+.subtext {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin-bottom: 2.5rem;
+}
+
+/* Stat-Kacheln ----------------------------------------------------------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Schnell-Erfassen-Formular ------------------------------------------- */
+
+.quick-add {
+  background: var(--paper-raised);
+  border: 1px solid rgba(28, 36, 48, 0.06);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.title-input {
+  width: 100%;
+  border: 1px solid rgba(28, 36, 48, 0.12);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-body);
+  margin-bottom: 0.85rem;
+}
+
+.quick-add-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.type-select,
+.date-input,
+.time-input,
+.recurrence-select {
+  border: 1px solid rgba(28, 36, 48, 0.12);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: var(--text-body);
+  background: var(--paper-raised);
+}
+
+.quick-add-row .btn-brand {
+  margin-left: auto;
+}
+
+@media (max-width: 576px) {
+  .quick-add-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quick-add-row .btn-brand {
+    margin-left: 0;
+  }
+}
+
+/* Leerer Zustand -------------------------------------------------------- */
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--paper-raised);
+  border: 1px dashed rgba(28, 36, 48, 0.14);
+  border-radius: var(--radius-card);
+}
+
+.empty-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.empty-hint {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Liste/Kalender-Umschalter ----------------------------------------------- */
+
+.view-toggle {
+  display: inline-flex;
+  background: var(--paper-raised);
+  border: 1px solid rgba(28, 36, 48, 0.1);
+  border-radius: 999px;
+  padding: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toggle-btn.active {
+  background: var(--accent-planung-strong);
+  color: var(--text-on-ink);
+}
+
+/* Agenda ------------------------------------------------------------------ */
+
+.agenda-group {
+  margin-bottom: 2rem;
+}
+
+.group-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+
+.group-label--overdue {
+  color: var(--warning);
+}
+
+/* Sanftes Eintreten der Zeilen, kleiner "WOW"-Moment beim Laden ---------- */
+
+.stagger-item {
+  display: block;
+  animation: item-enter 0.4s ease backwards;
+}
+
+@keyframes item-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -8,13 +8,14 @@
 
 <app-footer />
 
-<a
+<button
+  type="button"
   class="back-to-top"
   [class.visible]="showBackToTop"
-  href="#top"
-  aria-label="Nach oben springen"
+  (click)="scrollToTop()"
+  aria-label="Nach oben scrollen"
 >
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <polyline points="6,15 12,9 18,15" />
   </svg>
-</a>
+</button>

@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.tile {
+  height: 100%;
+  background: var(--paper-raised);
+  border: 1px solid rgba(28, 36, 48, 0.06);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
+}
+
+.tile.warning {
+  border-color: rgba(179, 70, 47, 0.25);
+  background: var(--warning-soft);
+}
+
+.tile-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-body);
+  margin-bottom: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile.warning .tile-value {
+  color: var(--warning);
+}
+
+.tile-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

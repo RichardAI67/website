@@ -1,0 +1,128 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: var(--paper-raised);
+  border: 1px solid rgba(28, 36, 48, 0.06);
+  margin-bottom: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.item:hover {
+  box-shadow: 0 8px 20px -12px rgba(16, 24, 40, 0.18);
+}
+
+/* Erledigt: durchgestrichen + gedaempfte Farbe statt Opacity, sonst reicht der
+   Text-Kontrast nicht mehr fuer WCAG AA */
+.item.done .item-title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.item.done .type-badge,
+.item.done .time,
+.item.done .date {
+  color: var(--text-muted);
+}
+
+.check {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  border-radius: 50%;
+  border: 2px solid var(--accent-planung);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-on-ink);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.item.done .check {
+  background: var(--accent-planung);
+}
+
+.check svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-title {
+  font-weight: 600;
+  color: var(--text-body);
+  margin-bottom: 0.3rem;
+}
+
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.type-badge {
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(62, 124, 177, 0.12);
+  color: var(--accent-planung-strong);
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.date {
+  font-family: var(--font-mono);
+}
+
+.delete {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.delete:hover,
+.delete:focus-visible {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.delete svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}

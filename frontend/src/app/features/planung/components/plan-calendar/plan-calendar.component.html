@@ -1,0 +1,57 @@
+<div class="calendar">
+  <div class="calendar-header">
+    <button type="button" class="nav-btn" (click)="previousMonth()" aria-label="Vorheriger Monat">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15,18 9,12 15,6" /></svg>
+    </button>
+    <p class="month-label">{{ monthLabel }}</p>
+    <button type="button" class="nav-btn" (click)="nextMonth()" aria-label="Nächster Monat">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9,18 15,12 9,6" /></svg>
+    </button>
+  </div>
+
+  <div class="weekday-row">
+    @for (label of weekdayLabels; track label) {
+      <span class="weekday">{{ label }}</span>
+    }
+  </div>
+
+  <div class="day-grid">
+    @for (day of days; track day.date) {
+      <button
+        type="button"
+        class="day-cell"
+        [class.outside]="!day.inCurrentMonth"
+        [class.today]="day.isToday"
+        [class.selected]="day.date === selectedDate"
+        (click)="selectDay(day)"
+        [attr.aria-label]="day.date + (day.items.length > 0 ? ', ' + day.items.length + ' Eintrag/Eintraege' : '')"
+        [attr.aria-pressed]="day.date === selectedDate"
+      >
+        <span class="day-number">{{ day.dayNumber }}</span>
+        @if (day.items.length > 0) {
+          <span class="day-dots">
+            @for (item of day.items.slice(0, 3); track item.id) {
+              <span class="dot dot--{{ item.type }}"></span>
+            }
+          </span>
+        }
+      </button>
+    }
+  </div>
+
+  <div class="selected-day-panel">
+    <p class="selected-day-heading">{{ selectedDate }}</p>
+    @if (selectedItems.length === 0) {
+      <p class="selected-day-empty">Nichts eingetragen an diesem Tag.</p>
+    } @else {
+      @for (item of selectedItems; track item.id) {
+        <app-plan-item-row
+          [item]="item"
+          [countdown]="countdown(item)"
+          (toggleDone)="toggleDone.emit(item)"
+          (remove)="remove.emit(item)"
+        />
+      }
+    }
+  </div>
+</div>

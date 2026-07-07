@@ -1,7 +1,7 @@
 <header class="top-nav">
   <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Hauptnavigation">
   <div class="container">
-    <a class="navbar-brand logo" href="#top">
+    <a class="navbar-brand logo" href="/#top" (click)="navigateAndClose($event, 'top')">
       <svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true">
         <line x1="16" y1="16" x2="16" y2="6" class="logo-line" />
         <line x1="16" y1="16" x2="26" y2="16" class="logo-line" />
@@ -31,13 +31,13 @@
     <div class="collapse navbar-collapse" id="siteNavCollapse">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link" href="#kategorien" (click)="closeMenu($event)">Bereiche</a>
+          <a class="nav-link" href="/#kategorien" (click)="navigateAndClose($event, 'kategorien')">Bereiche</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#vorteile" (click)="closeMenu($event)">Vorteile</a>
+          <a class="nav-link" href="/#vorteile" (click)="navigateAndClose($event, 'vorteile')">Vorteile</a>
         </li>
         <li class="nav-item">
-          <a class="btn-brand btn-brand--solid nav-cta-button" href="#start" (click)="closeMenu($event)">Kostenlos starten</a>
+          <a class="btn-brand btn-brand--solid nav-cta-button" href="/#start" (click)="navigateAndClose($event, 'start')">Kostenlos starten</a>
         </li>
       </ul>
     </div>

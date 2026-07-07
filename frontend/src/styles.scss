@@ -28,6 +28,13 @@
   --accent-haushalt: #c1613d;
   --accent-info: #6c5ce0;
 
+  /* accent-planung ist zu hell fuer Text auf hellem Hintergrund (WCAG AA) - fuer Text diese Variante nehmen */
+  --accent-planung-strong: #2d5a82;
+
+  /* Status (nicht an eine Kategorie gebunden, z.B. ueberfaellige Fristen) */
+  --warning: #b3462f;
+  --warning-soft: rgba(179, 70, 47, 0.1);
+
   /* Type */
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;

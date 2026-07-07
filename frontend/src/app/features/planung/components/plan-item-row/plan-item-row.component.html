@@ -1,0 +1,48 @@
+<div class="item" [class.done]="item.done">
+  <button
+    class="check"
+    type="button"
+    (click)="toggleDone.emit()"
+    [attr.aria-pressed]="item.done"
+    [attr.aria-label]="item.done ? item.title + ' als offen markieren' : item.title + ' als erledigt markieren'"
+  >
+    @if (item.done) {
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="5,13 10,18 19,7" />
+      </svg>
+    }
+  </button>
+
+  <div class="item-body">
+    <p class="item-title">{{ item.title }}</p>
+    <p class="item-meta">
+      <span class="type-badge type-badge--{{ item.type }}">
+        @switch (item.type) {
+          @case ('termin') {
+            Termin
+          }
+          @case ('ereignis') {
+            Ereignis
+          }
+          @case ('frist') {
+            Frist
+          }
+          @case ('aufgabe') {
+            Aufgabe · {{ recurrenceLabel(item.recurrence) }}
+          }
+        }
+      </span>
+      @if (item.time) {
+        <span class="time">{{ item.time }} Uhr</span>
+      }
+      <span class="date">{{ item.date | date:'dd.MM.yyyy' }}</span>
+    </p>
+  </div>
+
+  <button class="delete" type="button" (click)="remove.emit()" [attr.aria-label]="item.title + ' löschen'">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <line x1="6" y1="6" x2="18" y2="18" />
+      <line x1="6" y1="18" x2="18" y2="6" />
+    </svg>
+  </button>
+</div>

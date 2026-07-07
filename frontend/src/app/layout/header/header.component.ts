@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const bootstrap: any;
 
@@ -8,24 +9,25 @@ declare const bootstrap: any;
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  // Klappt das mobile Menu zu und springt danach erst zum Ziel-Anker.
-  // So verrutscht der Sprung nicht waehrend das Menu noch zuklappt.
-  closeMenu(event: Event): void {
-    const link = event.currentTarget as HTMLAnchorElement;
-    const targetId = link.getAttribute('href');
+  constructor(private router: Router) {}
 
-    const jumpToTarget = () => {
-      if (targetId) {
-        document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
-      }
+  // Klappt das mobile Menu zu und navigiert danach erst.
+  // So verrutscht der Sprung nicht waehrend das Menu noch zuklappt,
+  // und es funktioniert auch von einer anderen Seite aus (z.B. /planung).
+  navigateAndClose(event: Event, fragment: string): void {
+    event.preventDefault();
+
+    const goHome = () => {
+      this.router.navigate(['/'], { fragment });
     };
 
     const menu = document.getElementById('siteNavCollapse');
     if (menu && menu.classList.contains('show')) {
-      event.preventDefault();
       const collapse = bootstrap.Collapse.getOrCreateInstance(menu);
-      menu.addEventListener('hidden.bs.collapse', jumpToTarget, { once: true });
+      menu.addEventListener('hidden.bs.collapse', goHome, { once: true });
       collapse.hide();
+    } else {
+      goHome();
     }
   }
 }

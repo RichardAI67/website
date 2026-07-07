@@ -1,8 +1,10 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Category } from '../../data/categories';
 
 @Component({
   selector: 'app-category-card',
+  imports: [RouterLink],
   templateUrl: './category-card.component.html',
   styleUrl: './category-card.component.scss',
 })

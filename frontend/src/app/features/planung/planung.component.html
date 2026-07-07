@@ -1,0 +1,163 @@
+<section class="planung-page">
+  <div class="container">
+    <a class="back-link" routerLink="/" fragment="kategorien">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12,19 5,12 12,5" />
+      </svg>
+      Zurück zur Übersicht
+    </a>
+
+    <p class="eyebrow">Planung & Zeit</p>
+    <h1 class="heading">Termine, Fristen und Aufgaben an einem Ort.</h1>
+    <p class="subtext">
+      Trag ein, was ansteht — RichardAI sortiert es für dich nach Heute, dieser Woche und später.
+    </p>
+
+    <div class="stats">
+      <app-stat-tile [value]="overdueCount" label="Überfällig" tone="warning" />
+      <app-stat-tile [value]="todayCount" label="Heute" />
+      <app-stat-tile [value]="weekCount" label="Diese Woche" />
+      <app-stat-tile [value]="doneCount" label="Erledigt" />
+    </div>
+
+    <form class="quick-add" (ngSubmit)="addItem()">
+      <label class="visually-hidden" for="title">Titel</label>
+      <input
+        id="title"
+        class="title-input"
+        type="text"
+        name="title"
+        placeholder="z. B. Miete kündigen, Zahnarzttermin, Müll rausbringen…"
+        [(ngModel)]="newTitle"
+        required
+      />
+
+      <div class="quick-add-row">
+        <label class="visually-hidden" for="type">Art</label>
+        <select id="type" class="type-select" name="type" [(ngModel)]="newType">
+          <option value="termin">Termin</option>
+          <option value="ereignis">Ereignis</option>
+          <option value="frist">Frist</option>
+          <option value="aufgabe">Wiederkehrende Aufgabe</option>
+        </select>
+
+        <label class="visually-hidden" for="date">Datum</label>
+        <input id="date" class="date-input" type="date" name="date" [(ngModel)]="newDate" required />
+
+        <label class="visually-hidden" for="time">Uhrzeit (optional)</label>
+        <input id="time" class="time-input" type="time" name="time" [(ngModel)]="newTime" />
+
+        @if (newType === 'aufgabe') {
+          <label class="visually-hidden" for="recurrence">Wiederholung</label>
+          <select id="recurrence" class="recurrence-select" name="recurrence" [(ngModel)]="newRecurrence">
+            <option value="taeglich">Täglich</option>
+            <option value="woechentlich">Wöchentlich</option>
+            <option value="monatlich">Monatlich</option>
+            <option value="jaehrlich">Jährlich</option>
+          </select>
+        }
+
+        <button class="btn-brand btn-brand--solid" type="submit">Hinzufügen</button>
+      </div>
+    </form>
+
+    @if (items.length === 0) {
+      <div class="empty-state">
+        <p class="empty-title">Noch nichts eingetragen.</p>
+        <p class="empty-hint">Leg oben deinen ersten Termin, deine erste Frist oder Aufgabe an.</p>
+      </div>
+    } @else {
+      <div class="view-toggle" role="group" aria-label="Ansicht wählen">
+        <button
+          type="button"
+          class="toggle-btn"
+          [class.active]="view === 'liste'"
+          [attr.aria-pressed]="view === 'liste'"
+          (click)="setView('liste')"
+        >
+          Liste
+        </button>
+        <button
+          type="button"
+          class="toggle-btn"
+          [class.active]="view === 'kalender'"
+          [attr.aria-pressed]="view === 'kalender'"
+          (click)="setView('kalender')"
+        >
+          Kalender
+        </button>
+      </div>
+
+      @if (view === 'liste') {
+        <div class="agenda">
+          @if (overdueItems.length > 0) {
+            <div class="agenda-group">
+              <h2 class="group-label group-label--overdue">Überfällig</h2>
+              @for (item of overdueItems; track item.id; let i = $index) {
+                <app-plan-item-row
+                  class="stagger-item"
+                  [style.animation-delay.ms]="i * 40"
+                  [item]="item"
+                  [countdown]="countdown(item)"
+                  (toggleDone)="toggleDone(item)"
+                  (remove)="removeItem(item)"
+                />
+              }
+            </div>
+          }
+
+          @if (todayItems.length > 0) {
+            <div class="agenda-group">
+              <h2 class="group-label">Heute</h2>
+              @for (item of todayItems; track item.id; let i = $index) {
+                <app-plan-item-row
+                  class="stagger-item"
+                  [style.animation-delay.ms]="i * 40"
+                  [item]="item"
+                  [countdown]="countdown(item)"
+                  (toggleDone)="toggleDone(item)"
+                  (remove)="removeItem(item)"
+                />
+              }
+            </div>
+          }
+
+          @if (weekItems.length > 0) {
+            <div class="agenda-group">
+              <h2 class="group-label">Diese Woche</h2>
+              @for (item of weekItems; track item.id; let i = $index) {
+                <app-plan-item-row
+                  class="stagger-item"
+                  [style.animation-delay.ms]="i * 40"
+                  [item]="item"
+                  [countdown]="countdown(item)"
+                  (toggleDone)="toggleDone(item)"
+                  (remove)="removeItem(item)"
+                />
+              }
+            </div>
+          }
+
+          @if (laterItems.length > 0) {
+            <div class="agenda-group">
+              <h2 class="group-label">Später</h2>
+              @for (item of laterItems; track item.id; let i = $index) {
+                <app-plan-item-row
+                  class="stagger-item"
+                  [style.animation-delay.ms]="i * 40"
+                  [item]="item"
+                  [countdown]="countdown(item)"
+                  (toggleDone)="toggleDone(item)"
+                  (remove)="removeItem(item)"
+                />
+              }
+            </div>
+          }
+        </div>
+      } @else {
+        <app-plan-calendar [items]="items" (toggleDone)="toggleDone($event)" (remove)="removeItem($event)" />
+      }
+    }
+  </div>
+</section>

@@ -4,7 +4,9 @@
 }
 
 .card {
+  position: relative;
   --accent: var(--brand);
+  --accent-text: var(--brand-strong);
   height: 100%;
   background: var(--paper-raised);
   border: 1px solid rgba(28, 36, 48, 0.06);
@@ -19,9 +21,33 @@
 }
 
 .card-geld { --accent: var(--accent-geld); }
-.card-planung { --accent: var(--accent-planung); }
+.card-planung { --accent: var(--accent-planung); --accent-text: var(--accent-planung-strong); }
 .card-haushalt { --accent: var(--accent-haushalt); }
 .card-info { --accent: var(--accent-info); }
+
+/* Karten mit eigener Unterseite heben sich sichtbar von den reinen Info-Karten ab */
+.card.featured {
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 8px 28px -16px var(--accent);
+}
+
+.card.featured:hover {
+  box-shadow: 0 24px 44px -18px var(--accent);
+}
+
+.badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--accent);
+  color: var(--accent-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
 
 .icon {
   width: 56px;
@@ -86,4 +112,30 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+.open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  color: var(--accent-text);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: gap 0.2s ease;
+}
+
+.open-link:hover,
+.open-link:focus-visible {
+  gap: 0.55rem;
+}
+
+.open-link svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

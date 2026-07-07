@@ -16,4 +16,8 @@ export class AppComponent {
   onWindowScroll(): void {
     this.showBackToTop = window.scrollY > 400;
   }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

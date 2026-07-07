@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row gy-4">
       <div class="col-12 col-lg-5">
-        <a class="footer-brand" href="#top">
+        <a class="footer-brand" routerLink="/" fragment="top">
           <svg class="footer-logo" viewBox="0 0 32 32" aria-hidden="true">
             <line x1="16" y1="16" x2="16" y2="6" class="logo-line" />
             <line x1="16" y1="16" x2="26" y2="16" class="logo-line" />
@@ -26,7 +26,13 @@
         <p class="footer-heading">Bereiche</p>
         <ul class="footer-links">
           @for (category of categories; track category.id) {
-            <li><a href="#kategorien">{{ category.title }}</a></li>
+            <li>
+              @if (category.route) {
+                <a [routerLink]="category.route">{{ category.title }}</a>
+              } @else {
+                <a routerLink="/" fragment="kategorien">{{ category.title }}</a>
+              }
+            </li>
           }
         </ul>
       </nav>
@@ -34,8 +40,8 @@
       <nav class="col-12 col-lg-4" aria-label="RichardAI">
         <p class="footer-heading">RichardAI</p>
         <ul class="footer-links">
-          <li><a href="#vorteile">Vorteile</a></li>
-          <li><a href="#start">Kostenlos starten</a></li>
+          <li><a routerLink="/" fragment="vorteile">Vorteile</a></li>
+          <li><a routerLink="/" fragment="start">Kostenlos starten</a></li>
         </ul>
       </nav>
     </div>

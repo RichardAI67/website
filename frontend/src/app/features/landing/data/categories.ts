@@ -4,10 +4,12 @@ export interface Category {
   description: string;
   bullets: string[];
   color: string;
+  route?: string;
 }
 
 // Die 4 Kategorien fuer die Startseite
 // color = gleicher Hex-Wert wie --accent-* in styles.scss (Three.js kann kein CSS var() lesen)
+// route = eigene Unterseite, falls es die schon gibt
 export const CATEGORIES: Category[] = [
   {
     id: 'geld',
@@ -24,6 +26,7 @@ export const CATEGORIES: Category[] = [
       'Termine, Fristen und wiederkehrende Aufgaben, sauber getaktet statt im Kopf jongliert.',
     bullets: ['Termine & Erinnerungen', 'Fristen im Blick', 'Wiederkehrende Aufgaben'],
     color: '#3e7cb1',
+    route: '/planung',
   },
   {
     id: 'haushalt',
