@@ -38,13 +38,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-on-ink);
+  color: var(--accent-planung);
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
+.check:hover svg {
+  opacity: 0.7;
+}
+
 .item.done .check {
   background: var(--accent-planung);
+  color: var(--text-on-ink);
 }
 
 .check svg {
@@ -55,6 +60,13 @@
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  /* Angedeuteter Haken, damit man auch unerledigt sieht: das ist eine Checkbox */
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+}
+
+.item.done .check svg {
+  opacity: 1;
 }
 
 .item-body {

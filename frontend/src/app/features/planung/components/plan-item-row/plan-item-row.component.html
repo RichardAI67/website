@@ -5,12 +5,11 @@
     (click)="toggleDone.emit()"
     [attr.aria-pressed]="item.done"
     [attr.aria-label]="item.done ? item.title + ' als offen markieren' : item.title + ' als erledigt markieren'"
+    [title]="item.done ? 'Als offen markieren' : 'Als erledigt markieren'"
   >
-    @if (item.done) {
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <polyline points="5,13 10,18 19,7" />
-      </svg>
-    }
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <polyline points="5,13 10,18 19,7" />
+    </svg>
   </button>
 
   <div class="item-body">

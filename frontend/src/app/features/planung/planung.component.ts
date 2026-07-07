@@ -11,6 +11,16 @@ import {
   savePlanItems,
   toLocalDateStr,
 } from './data/plan-item';
+import { downloadIcsFile } from './data/ics-export';
+import { downloadBackup, parseBackupFile } from './data/backup';
+import {
+  alreadyNotifiedToday,
+  markNotifiedToday,
+  notificationPermission,
+  notificationsSupported,
+  requestNotificationPermission,
+  showNotification,
+} from './data/notifications';
 import { PlanItemRowComponent } from './components/plan-item-row/plan-item-row.component';
 import { PlanCalendarComponent } from './components/plan-calendar/plan-calendar.component';
 import { StatTileComponent } from './components/stat-tile/stat-tile.component';
@@ -45,9 +55,15 @@ export class PlanungComponent implements OnInit {
   weekCount = 0;
   doneCount = 0;
 
+  notificationsSupported = notificationsSupported();
+  notificationsEnabled = false;
+  importMessage = '';
+
   ngOnInit(): void {
     this.items = loadPlanItems();
     this.refresh();
+    this.notificationsEnabled = notificationPermission() === 'granted';
+    this.notifyIfDueToday();
   }
 
   setView(view: ViewMode): void {
@@ -94,6 +110,72 @@ export class PlanungComponent implements OnInit {
 
   countdown(item: PlanItem): string {
     return countdownLabel(item);
+  }
+
+  exportToCalendar(): void {
+    downloadIcsFile(this.items);
+  }
+
+  exportBackup(): void {
+    downloadBackup(this.items);
+  }
+
+  async importBackup(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    try {
+      const text = await file.text();
+      const imported = parseBackupFile(text);
+
+      const existingIds = new Set(this.items.map((i) => i.id));
+      const newItems = imported.filter((i) => !existingIds.has(i.id));
+
+      this.items = [...this.items, ...newItems];
+      this.save();
+
+      this.importMessage =
+        newItems.length === imported.length
+          ? `${newItems.length} Einträge wiederhergestellt.`
+          : `${newItems.length} neue Einträge wiederhergestellt (${imported.length - newItems.length} waren schon vorhanden).`;
+    } catch {
+      this.importMessage = 'Diese Datei konnte nicht gelesen werden. Ist es eine RichardAI-Sicherungsdatei?';
+    }
+
+    input.value = '';
+  }
+
+  async enableNotifications(): Promise<void> {
+    const result = await requestNotificationPermission();
+    this.notificationsEnabled = result === 'granted';
+    if (this.notificationsEnabled) {
+      this.notifyIfDueToday();
+    }
+  }
+
+  private notifyIfDueToday(): void {
+    if (notificationPermission() !== 'granted') {
+      return;
+    }
+
+    const today = toLocalDateStr(new Date());
+    if (alreadyNotifiedToday(today)) {
+      return;
+    }
+
+    const due = [...this.overdueItems, ...this.todayItems].filter((i) => !i.done);
+    if (due.length === 0) {
+      return;
+    }
+
+    showNotification(
+      'RichardAI Planung',
+      due.length === 1 ? `${due[0].title} steht heute an.` : `${due.length} Einträge stehen heute an oder sind überfällig.`,
+    );
+    markNotifiedToday(today);
   }
 
   private save(): void {

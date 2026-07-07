@@ -82,6 +82,85 @@
   }
 }
 
+/* Kalender-Export & Erinnerungen ------------------------------------------ */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(28, 36, 48, 0.14);
+  background: var(--paper-raised);
+  color: var(--text-body);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.toolbar-btn:hover,
+.toolbar-btn:focus-visible {
+  background: var(--paper);
+  border-color: var(--accent-planung);
+}
+
+.toolbar-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.toolbar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--brand-strong);
+  background: var(--brand-soft);
+}
+
+.toolbar-status svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.file-btn {
+  margin: 0;
+}
+
+.toolbar-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+
+.toolbar-hint--status {
+  color: var(--brand-strong);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
 /* Schnell-Erfassen-Formular ------------------------------------------- */
 
 .quick-add {
