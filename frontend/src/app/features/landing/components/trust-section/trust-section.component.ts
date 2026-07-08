@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RevealDirective } from '../../../../shared/reveal/reveal.directive';
 
 interface TrustPoint {
   id: string;
@@ -8,6 +9,7 @@ interface TrustPoint {
 
 @Component({
   selector: 'app-trust-section',
+  imports: [RevealDirective],
   templateUrl: './trust-section.component.html',
   styleUrl: './trust-section.component.scss',
 })

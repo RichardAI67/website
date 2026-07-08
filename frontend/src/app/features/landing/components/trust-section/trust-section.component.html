@@ -1,13 +1,13 @@
 <section class="section trust-section" id="vorteile">
   <div class="container">
-    <div class="intro">
+    <div class="intro" appReveal>
       <p class="eyebrow">Warum RichardAI</p>
       <h2 class="heading">Drei Versprechen, die wir einhalten.</h2>
     </div>
 
     <div class="row g-4 grid-wrapper">
-      @for (point of points; track point.id) {
-        <div class="col-12 col-md-4">
+      @for (point of points; track point.id; let i = $index) {
+        <div class="col-12 col-md-4" appReveal [revealDelay]="i * 100">
           <div class="point">
             <svg class="point-icon" viewBox="0 0 40 40" aria-hidden="true">
               @switch (point.id) {

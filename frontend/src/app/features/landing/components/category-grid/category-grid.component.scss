@@ -13,9 +13,10 @@
 }
 
 .heading {
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 @media (max-width: 768px) {
@@ -26,4 +27,12 @@
 
 .grid-wrapper {
   align-items: stretch;
+}
+
+/* Leichter Versatz statt starrem Raster - wirkt editorieller */
+@media (min-width: 768px) {
+  .grid-wrapper > div:nth-child(2),
+  .grid-wrapper > div:nth-child(4) {
+    margin-top: 2.5rem;
+  }
 }

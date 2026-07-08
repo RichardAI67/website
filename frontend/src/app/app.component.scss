@@ -8,7 +8,8 @@
   top: -3rem;
   left: 1rem;
   z-index: 1000;
-  background: var(--brand);
+  /* brand-strong statt brand: brand allein hat mit weisser Schrift nicht genug Kontrast (WCAG AA) */
+  background: var(--brand-strong);
   color: var(--text-on-ink);
   padding: 0.6rem 1.2rem;
   border-radius: 8px;

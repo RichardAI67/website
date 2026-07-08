@@ -1,6 +1,6 @@
 <section class="section category-section" id="kategorien">
   <div class="container">
-    <div class="intro">
+    <div class="intro" appReveal>
       <p class="eyebrow">Vier Bereiche, ein Überblick</p>
       <h2 class="heading">
         Alles, was zu deinem Alltag gehört — endlich an einem Ort.
@@ -8,8 +8,8 @@
     </div>
 
     <div class="row g-4 grid-wrapper">
-      @for (category of categories; track category.id) {
-        <div class="col-12 col-md-6">
+      @for (category of categories; track category.id; let i = $index) {
+        <div class="col-12 col-md-6" appReveal [revealDelay]="i * 100">
           <app-category-card [category]="category" />
         </div>
       }

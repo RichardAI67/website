@@ -1,12 +1,35 @@
 .cta-banner {
+  position: relative;
+  overflow: hidden;
   /* brand-strong/-darker statt brand: brand allein hat mit weisser Schrift nicht genug Kontrast (WCAG AA) */
   background: linear-gradient(135deg, var(--brand-strong) 0%, var(--brand-darker) 100%);
   color: var(--text-on-ink);
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.watermark {
+  position: absolute;
+  top: 50%;
+  right: -6rem;
+  transform: translateY(-50%);
+  width: 26rem;
+  height: 26rem;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .watermark {
+    width: 16rem;
+    height: 16rem;
+    right: -4rem;
+  }
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: 40rem;
   text-align: center;
   margin-left: auto;
@@ -14,14 +37,16 @@
 }
 
 .heading {
-  font-size: 2.6rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: 3.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 1.1rem;
 }
 
 @media (max-width: 768px) {
   .heading {
-    font-size: 1.9rem;
+    font-size: 2.1rem;
   }
 }
 
